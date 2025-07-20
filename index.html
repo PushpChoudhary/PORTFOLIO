@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushp Choudhary | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+        }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .glass-effect {
+            background: rgba(23, 39, 64, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .accent-color {
+            color: #64ffda;
+        }
+        .btn-primary {
+            @apply border border-teal-300 text-teal-300 rounded-md px-6 py-3 text-lg font-medium hover:bg-teal-300/10 transition-all duration-300 transform hover:-translate-y-1;
+        }
+        .section-heading {
+            @apply text-3xl md:text-4xl font-bold text-gray-200 mb-12 flex items-center;
+        }
+        .section-heading::after {
+            content: '';
+            display: block;
+            position: relative;
+            top: 2px;
+            width: 150px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: #233554;
+        }
+        /* Scroll Reveal Animations */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        [data-reveal="visible"] {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header & Nav -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold accent-color">PC</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="hover:text-teal-300 transition-colors">About</a>
+                <a href="#experience" class="hover:text-teal-300 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-teal-300 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-teal-300 transition-colors">Skills</a>
+                <a href="RESUME_PC.pdf" target="_blank" class="hover:text-teal-300 transition-colors">Resume</a>
+                <a href="#contact" class="btn-primary !px-4 !py-2 !text-base">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#112240] px-6 pb-4">
+            <a href="#about" class="block py-2 hover:text-teal-300">About</a>
+            <a href="#experience" class="block py-2 hover:text-teal-300">Experience</a>
+            <a href="#projects" class="block py-2 hover:text-teal-300">Projects</a>
+            <a href="#skills" class="block py-2 hover:text-teal-300">Skills</a>
+            <a href="RESUME_PC.pdf" target="_blank" class="block py-2 hover:text-teal-300">Resume</a>
+            <a href="#contact" class="block mt-4 text-center btn-primary">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center">
+            <div class="max-w-4xl" data-reveal>
+                <p class="text-lg text-teal-300 mb-4">Hi, my name is</p>
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-100">Pushp Choudhary.</h1>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-400 mt-2">I build things for the web and analyze data.</h2>
+                <p class="mt-6 max-w-2xl text-lg text-gray-400">
+                    I'm a computer science student with a passion for data analytics, web development, and cybersecurity. I specialize in creating insightful data visualizations, building responsive web applications, and exploring the depths of network security.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#projects" class="btn-primary">Check out my work!</a>
+                    <a href="RESUME_PC.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary">View Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24" data-reveal>
+            <h2 class="section-heading">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3 text-gray-400 space-y-4 text-lg">
+                    <p>
+                        Hello! I'm Pushp, a driven computer science student from New Delhi. My journey in tech began with a curiosity for how data can tell a story, which led me to dive into <span class="accent-color">Data Analytics</span>. I've had the privilege of working with large datasets, building interactive dashboards in Power BI, and turning raw numbers into actionable business insights.
+                    </p>
+                    <p>
+                        My passion for building things from the ground up then guided me toward <span class="accent-color">Web Development</span>. I enjoy the process of bringing ideas to life in the browser, from the initial design to a fully responsive and optimized web application using technologies like React and modern JavaScript.
+                    </p>
+                    <p>
+                        Beyond development, I'm deeply interested in <span class="accent-color">Networking and Cybersecurity</span>, holding several CCNA certifications. I believe that a secure and robust foundation is critical for any technology, and I'm always eager to learn more about protecting digital assets.
+                    </p>
+                </div>
+                <div class="md:col-span-2 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg bg-[#112240] border-2 border-teal-300 relative group">
+                        <img src="https://placehold.co/400x400/0a192f/64ffda?text=PC" alt="Pushp Choudhary" class="w-full h-full object-cover rounded-md transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
+                        <div class="absolute inset-0 border-2 border-teal-300 rounded-md -z-10 translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24" data-reveal>
+            <h2 class="section-heading">Where I've Worked</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-teal-300/30">
+                    <!-- Main Flow Services -->
+                    <div class="mb-12 ml-6 md:ml-10 p-6 rounded-lg glass-effect">
+                        <span class="absolute -left-[11px] flex items-center justify-center w-6 h-6 bg-[#0a192f] rounded-full ring-4 ring-teal-300"></span>
+                        <h3 class="text-xl font-semibold text-gray-100">Data Analytics Intern</h3>
+                        <p class="text-teal-300 mb-1">Main Flow Services and Technologies Pvt. Ltd.</p>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Jun 2023 - Aug 2023</time>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Analyzed over 100,000 records to identify business trends, improving forecast accuracy by 25%.</li>
+                            <li>Built 5+ interactive dashboards in Power BI to visualize KPIs.</li>
+                            <li>Collaborated with cross-functional teams, reducing redundant reports by 40%.</li>
+                        </ul>
+                    </div>
+                    <!-- Rinex Technologies -->
+                    <div class="mb-12 ml-6 md:ml-10 p-6 rounded-lg glass-effect">
+                        <span class="absolute -left-[11px] flex items-center justify-center w-6 h-6 bg-[#0a192f] rounded-full ring-4 ring-teal-300"></span>
+                        <h3 class="text-xl font-semibold text-gray-100">Web Development Intern</h3>
+                        <p class="text-teal-300 mb-1">Rinex Technologies</p>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Sep 2023 - Nov 2023</time>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Developed 3 responsive web applications using HTML, CSS, and JavaScript.</li>
+                            <li>Reduced page load time by 30% through frontend asset optimization.</li>
+                            <li>Integrated RESTful APIs, improving user experience for over 200 daily users.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24" data-reveal>
+            <h2 class="section-heading">Things I've Built</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1: SoulCare -->
+                <div class="glass-effect rounded-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/PushpChoudhary" target="_blank" class="text-gray-400 hover:text-teal-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">SoulCare Mental Health App</h3>
+                        <p class="text-gray-400">A real-time sentiment analysis tool to automate therapy recommendations, serving 500+ users in its first month.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">ReactJS</span>
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">NLP</span>
+                    </div>
+                </div>
+                <!-- Project 2: AI Master -->
+                <div class="glass-effect rounded-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/PushpChoudhary" target="_blank" class="text-gray-400 hover:text-teal-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">AI Master: Hands-Free Control</h3>
+                        <p class="text-gray-400">An AI-powered accessibility tool using voice commands and hand gestures for keyboard and mouse control, improving navigation speed by 40%.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">OpenCV</span>
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">Deep Learning</span>
+                    </div>
+                </div>
+                <!-- Project 3: Financial News Analyzer -->
+                <div class="glass-effect rounded-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/PushpChoudhary" target="_blank" class="text-gray-400 hover:text-teal-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Financial News Sentiment Analyzer</h3>
+                        <p class="text-gray-400">Engineered a tool analyzing 10,000+ financial articles daily to predict market sentiment with 88% accuracy, reducing manual analysis time by 70%.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs font-mono text-teal-300 bg-teal-900/50 px-2 py-1 rounded">Web Scraping</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Certifications Section -->
+        <section id="skills" class="py-24" data-reveal>
+            <h2 class="section-heading">My Skills & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-200 mb-6">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-teal-300 mb-2">Languages & Web</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">ReactJS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-teal-300 mb-2">Data & Analytics</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">AI/ML</span><span class="skill-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-teal-300 mb-2">Networking & Security</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">OSPF</span><span class="skill-tag">VLANs</span><span class="skill-tag">Firewalls</span><span class="skill-tag">VPNs</span><span class="skill-tag">Threat Detection</span>
+                            </div>
+                        </div>
+                         <div>
+                            <h4 class="text-lg font-semibold text-teal-300 mb-2">Cloud & Tools</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">AWS (EC2, S3)</span><span class="skill-tag">Git</span><span class="skill-tag">Packet Tracer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-200 mb-6">Certifications</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">CCNA: Introduction to Networks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">CCNA: Switching, Routing, and Wireless</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">CCNA: Enterprise Networking, Security</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">Introduction to Cybersecurity - Cisco</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">Google Cloud Fundamentals - Coursera</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-300 mr-3">✓</span>
+                            <span class="text-gray-400">AWS Cloud Security - AWS Academy</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 text-center" data-reveal>
+            <h2 class="text-2xl font-semibold text-teal-300 mb-2">What's Next?</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-gray-100 mb-4">Get In Touch</h3>
+            <p class="max-w-xl mx-auto text-gray-400 mb-8">
+                I'm currently open to new opportunities and would love to chat. Whether you have a question or just want to say hi, feel free to reach out. I'll do my best to get back to you!
+            </p>
+            <a href="mailto:choudhary.pushp1101@gmail.com" class="btn-primary text-xl">Say Hello</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 relative z-10">
+        <div class="flex justify-center items-center space-x-6 mb-4">
+             <a href="https://github.com/PushpChoudhary" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-300 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/pushp-choudhary" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-300 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+        </div>
+        <p class="text-center text-gray-500 text-sm">
+            Designed & Built by Pushp Choudhary
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Close Mobile Menu on Link Click ---
+            const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+            for (let link of mobileMenuLinks) {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+            
+            // --- Header Shadow on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('shadow-lg');
+                }
+            });
+
+            // --- Custom Skill Tag Styling ---
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.classList.add(
+                    'bg-gray-700', 'text-gray-300', 'text-sm', 'font-medium',
+                    'px-3', 'py-1', 'rounded-full', 'whitespace-nowrap'
+                );
+            });
+
+            // --- Animated Background Canvas ---
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+
+            function createParticles() {
+                particles = [];
+                let particleCount = Math.floor(canvas.width / 40);
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 1.5 + 0.5,
+                    });
+                }
+            }
+            createParticles();
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(100, 255, 218, 0.5)';
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
+            });
+
+
+            // --- Scroll Reveal Animation using Intersection Observer ---
+            const revealElements = document.querySelectorAll('[data-reveal]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.setAttribute('data-reveal', 'visible');
+                        observer.unobserve(entry.target); // Optional: stop observing once visible
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
